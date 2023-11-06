@@ -21,12 +21,12 @@ export default function People() {
     }, [])
 
     return (
-        <>
+        <ul>
             {
                 agents?.map((agent) => {
                     return <li key={agent.id}><img src={`images/${agent.image.path}`} alt="agent image" /></li>
                 })
             }
-        </>
+        </ul>
     )
 }
