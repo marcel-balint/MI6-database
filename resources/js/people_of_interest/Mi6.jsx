@@ -1,7 +1,8 @@
-import "./bootstrap";
+import React from 'react';
+import Homepage from "./components/Homepage";
 
-import React from "react";
+export default function Mi6() {
 
-export default function App() {
-    return <div> App</div>;
+    return <Homepage />
+
 }
