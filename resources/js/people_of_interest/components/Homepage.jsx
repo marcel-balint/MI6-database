@@ -1,13 +1,16 @@
 import React, { useState } from 'react';
 import '/resources/css/style.scss'
-import Sidepanel from './Sidepanel';
 export default function Homepage() {
 
-    const [open, setOpen] = useState(1)
+    const [open, setOpen] = useState(true)
+
+    function toggleMenu() {
+        setOpen (!open)
+    }
 
     return (
         <div className='body'>
-            <nav className="sidenav">
+            <nav className={"sidenav" + (open ? '' : ' sidenav_closed')}>
                 <div className="sidenav__content">
                     <img src="https://classes.codingbootcamp.cz/assets/classes/1404/mi6-seal.png" alt="seal" className="sidenav__image"/>
 
@@ -21,8 +24,7 @@ export default function Homepage() {
 
                 </div>
 
-                <button className="sidenav__arrow" onClick={ () => { setOpen (open - 1) }}></button>
-                <span className="sidenav__arrow" onClick={ () => { setOpen (open + 1) }}></span>
+                <span className={"sidenav__arrow" + (open ? '' : ' sidenav__arrow_closed')} onClick={toggleMenu}></span>
             </nav>
 
             <main>
