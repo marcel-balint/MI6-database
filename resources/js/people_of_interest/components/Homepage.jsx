@@ -1,5 +1,6 @@
 import React from 'react';
 import '/resources/css/style.scss'
+import People from './People';
 export default function Homepage() {
 
     // let sidenav = document.querySelector('.sidenav');
@@ -27,6 +28,7 @@ export default function Homepage() {
 
             <main>
             <h1>Welcome to MI6</h1>
+            <People />
             </main>
 
         </div>
