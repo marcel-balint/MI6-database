@@ -8,4 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Image extends Model
 {
     use HasFactory;
+
+    public function Person()
+    {
+        return $this->hasOne(Image::class);
+    } 
 }
