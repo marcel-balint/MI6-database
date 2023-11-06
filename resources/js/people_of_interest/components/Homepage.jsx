@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import '/resources/css/style.scss'
+import People from './People';
 export default function Homepage() {
 
     const [open, setOpen] = useState(true)
@@ -28,7 +29,9 @@ export default function Homepage() {
             </nav>
 
             <main>
-                <h1>Welcome to MI6</h1>
+            <h1>Welcome to MI6</h1>
+            <People />
+
             </main>
 
         </div>
