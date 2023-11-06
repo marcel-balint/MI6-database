@@ -24,14 +24,25 @@ export default function People() {
         loadAgents();
     }, []);
 
+    const handleId = (id) => {
+        setAgentId(id);
+    };
+    const personDetail = <PersonDetail agentId={agentId} />;
+
     const agentsList = agents?.map((agent) => {
-        return agent.id !== null ? (
+        return (
             <li key={agent.id}>
-                <img src={`images/${agent.image.path}`} alt="agent image" />
+                {" "}
+                <img
+                    style={{ cursor: "pointer" }}
+                    key={agent.id}
+                    onClick={() => handleId(agent.id)}
+                    src={`images/${agent.image.path}`}
+                    alt="agent image"
+                />
             </li>
-        ) : (
-            <PersonDetail agentId={agentId} setAgentId={setAgentId} />
         );
     });
-    return <>{agentsList}</>;
+
+    return <>{agentId == null ? <ul> {agentsList} </ul> : personDetail}</>;
 }

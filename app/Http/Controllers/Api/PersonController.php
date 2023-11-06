@@ -18,7 +18,8 @@ class PersonController extends Controller
     }
     public function show(string $id)
     {
-        // it has GET by default so we start with 'with'
+        // When accessing an id from api URL, 
+        // in the query it has GET by default so we start with 'with'
         $the_agent = Person::with('aliases', 'image')->findOrFail($id);
 
         return $the_agent;
