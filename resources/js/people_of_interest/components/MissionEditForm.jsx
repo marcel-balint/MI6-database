@@ -25,16 +25,15 @@ const MissionEditForm = ({ missionId, setMissionId }) => {
     const handleSubmit = async (event) => {
         event.preventDefault();
         try {
-          const response = await axios.post(`/api/missions/${missionId}`, missionData);
-          setMessage(response.data['status']);
-          
+            const response = await axios.post(
+                `/api/missions/${missionId}`,
+                missionData
+            );
+            setMessage(response.data["status"]);
         } catch (error) {
-          setMessage('ERROR')
+            setMessage("ERROR");
         }
-
     };
-
-    
 
     useEffect(() => {
         getMission();
@@ -46,7 +45,8 @@ const MissionEditForm = ({ missionId, setMissionId }) => {
 
             <h2>{missionData?.name}</h2>
             <p>{missionData?.year}</p>
-            {message == 'ERROR'? <p>ERROR</p>:'Success!'}
+            {message == "ERROR" ? <p>ERROR</p> : ""}
+            {message == "success" ? <p>Success!</p> : ""}
             <div>MissionEditForm</div>
             {missionData ? (
                 <form action="" method="post" onSubmit={handleSubmit}>
