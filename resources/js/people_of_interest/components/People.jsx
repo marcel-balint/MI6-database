@@ -12,7 +12,7 @@ export default function People() {
         try {
             const response = await fetch("http://www.mi6.test/api/people");
             const data = await response.json();
-            console.log(data);
+            // console.log(data);
             setAgents(data);
         } catch (error) {
             console.log(
