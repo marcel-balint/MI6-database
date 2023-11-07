@@ -5,6 +5,7 @@
     background-color: #2b5554;
     color: white;
     font-size: 10px;
+    height: 100vh;
 }
 
 .body {
@@ -97,7 +98,7 @@ main {
     width: 100%;
     display: flex;
     flex-direction: column;
-    
+
     justify-content: center;
     align-items: center;
     flex-direction: column;
@@ -116,21 +117,19 @@ main {
     }
 
     ul {
-      display: flex;
-      flex-wrap: wrap;
-      list-style: none;
-      img{
-        max-width: 10em;
-        max-height: 10em;
-        margin: 0.5em;
-        transition: transform .2s;
-        
-      }
+        display: flex;
+        flex-wrap: wrap;
+        list-style: none;
+        img {
+            max-width: 10em;
+            max-height: 10em;
+            margin: 0.5em;
+            transition: transform 0.2s;
+        }
     }
-    
+
     img:hover {
-      transform: scale(1.5);
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        transform: scale(1.5);
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
     }
 }
-
