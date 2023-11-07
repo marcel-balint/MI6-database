@@ -13,9 +13,14 @@ export default function People() {
     const loadAgents = async () => {
         try {
             const response = await fetch(
-                `http://www.mi6.test/api/people?status=encodeURIComponent(${selectedStatus})`
+                              `http://www.mi6.test/api/people?status=${encodeURIComponent(
+                    selectedStatus
+                )}`
+                // `http://www.mi6.test/api/people?status=encodeURIComponent(${selectedStatus})`
             );
             const data = await response.json();
+
+            
             // console.log(data);
             setAgents(data);
         } catch (error) {
