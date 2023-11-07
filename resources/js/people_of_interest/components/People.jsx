@@ -8,6 +8,8 @@ export default function People() {
     const [agentId, setAgentId] = useState(null);
     const [selectedStatus, setSelectedStatus] = useState('')
 
+    console.log(selectedStatus);
+
     const loadAgents = async () => {
         try {
             const response = await fetch("http://www.mi6.test/api/people");
