@@ -1,10 +1,9 @@
-@import url('https://fonts.googleapis.com/css2?family=Cutive+Mono&family=Noto+Serif+Display:wght@200;400;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Cutive+Mono&family=Noto+Serif+Display:wght@200;400;700&display=swap");
 
 #people-of-interest-app {
     box-sizing: border-box;
-    background-color: #2B5554;
+    background-color: #2b5554;
     color: white;
-    height: 100vh;
     font-size: 10px;
 }
 
@@ -17,9 +16,8 @@
 .sidenav {
     position: relative;
     width: 15rem;
-    height: 100%;
     background-color: #163838;
-    font-family: 'Cutive Mono', monospace;
+    font-family: "Cutive Mono", monospace;
     font-size: 1.4rem;
     transition: width 1s;
 
@@ -40,7 +38,6 @@
         list-style-type: none;
         padding: 0;
         margin: 0;
-     
     }
 
     &__link {
@@ -53,11 +50,11 @@
         }
 
         &_active {
-            background-color: #2B5554;
+            background-color: #2b5554;
         }
 
         &:hover {
-            background-color: #2B5554;
+            background-color: #2b5554;
         }
     }
 
@@ -76,12 +73,12 @@
         cursor: pointer;
 
         &::after {
-            content: '<';
+            content: "<";
         }
 
         &_closed {
             &::after {
-                content: '>';
+                content: ">";
             }
         }
     }
@@ -92,19 +89,48 @@
 }
 
 main {
-    font-family: 'Noto Serif Display', serif;
+    font-family: "Noto Serif Display", serif;
     background-image: url(https://classes.codingbootcamp.cz/assets/classes/1404/mi6-seal-bg.png);
     background-repeat: no-repeat;
     background-size: contain;
     background-position: center;
     width: 100%;
     display: flex;
+    flex-direction: column;
+    
     justify-content: center;
     align-items: center;
-
+    flex-direction: column;
+    .person-detail {
+        display: flex;
+        flex-direction: column;
+        height: 100vh;
+        .description {
+            font-size: 1rem;
+        }
+    }
     h1 {
         font-size: 3.6rem;
         font-weight: 300;
         text-align: center;
     }
+
+    ul {
+      display: flex;
+      flex-wrap: wrap;
+      list-style: none;
+      img{
+        max-width: 10em;
+        max-height: 10em;
+        margin: 0.5em;
+        transition: transform .2s;
+        
+      }
+    }
+    
+}
+
+img:hover {
+  transform: scale(1.5);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
