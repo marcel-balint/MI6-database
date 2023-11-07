@@ -23,6 +23,19 @@ const MissionEditForm = ({ missionId, setMissionId }) => {
             <h2>{missionData?.name}</h2>
             <p>{missionData?.year}</p>
             <div>MissionEditForm</div>
+
+            <form>
+                <input type="text" value={missionData?.name} />
+                <input type="text" value={missionData?.year} />
+                <select name="" id="">
+                    <option defaultValue="success" value="success">
+                        Success
+                    </option>
+                    <option value="Fail">Fail</option>
+                </select>
+                <br />
+                <input type="submit" value="Edit" />
+            </form>
         </>
     );
 };
