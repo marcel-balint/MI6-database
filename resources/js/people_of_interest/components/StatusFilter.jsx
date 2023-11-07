@@ -22,7 +22,7 @@ const StatusFilter = ({selectedStatus, setSelectedStatus}) => {
     return (<div className="status-filter">
       This is the status filter
       {statuses?.map((status,i)=>{
-        return <button key={i}>{ status.name }</button>
+        return <button key={i} onClick={() => setSelectedStatus(status.id)}>{ status.name }</button>
       })
 
       }
