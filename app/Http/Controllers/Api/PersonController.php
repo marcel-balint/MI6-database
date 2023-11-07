@@ -12,7 +12,6 @@ class PersonController extends Controller
 {
     public function index() {
         $people = Person::with('aliases', 'image')->limit(20)->get();
-
         return $people;
     }
 
