@@ -44,5 +44,7 @@ export default function People() {
         );
     });
 
+
     return <>{agentId == null ? <ul> {agentsList} </ul> : personDetail}</>;
 }
+
