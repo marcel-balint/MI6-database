@@ -20,6 +20,7 @@ class PersonController extends Controller
   {
     // it has GET by default so we start with 'with'
     $the_agent = Person::with('aliases', 'image')->findOrFail($id);
+   
 
     return $the_agent;
   }
