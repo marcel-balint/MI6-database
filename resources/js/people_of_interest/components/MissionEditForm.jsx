@@ -12,6 +12,22 @@ const MissionEditForm = ({ missionId, setMissionId }) => {
         setMissionData(response.data);
     };
 
+    console.log(missionData)
+    
+    const handleChange = (event) => {
+        setMissionData(previous_values => {
+            return ({...previous_values, 
+                [event.target.name]: event.target.value
+            });
+        });
+    }
+
+    const handleSubmit = (event) => {
+    event.preventDefault();
+    const response = axios.post(`http://www.mi6.test/api/missions/${missionId}/store`, missionData);
+        console.log(response)
+}
+
     useEffect(() => {
         getMission();
     }, []);
@@ -24,10 +40,10 @@ const MissionEditForm = ({ missionId, setMissionId }) => {
             <p>{missionData?.year}</p>
             <div>MissionEditForm</div>
 
-            <form>
-                <input type="text" value={missionData?.name} />
-                <input type="text" value={missionData?.year} />
-                <select name="" id="">
+            <form action="" method="post" onSubmit={ handleSubmit }>
+                <input type="text" name='name' value={missionData?.name} onChange={(e) => handleChange(e)}/>
+                <input type="text" name="year" value={missionData?.year} onChange={(e) => handleChange(e)}/>
+                <select name='outcome' id="" onChange={(e) => handleChange(e)}>
                     <option defaultValue="success" value="success">
                         Success
                     </option>
