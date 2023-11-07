@@ -12,21 +12,20 @@ const MissionEditForm = ({ missionId, setMissionId }) => {
         setMissionData(response.data);
     };
 
-    console.log(missionData)
-    
     const handleChange = (event) => {
-        setMissionData(previous_values => {
-            return ({...previous_values, 
-                [event.target.name]: event.target.value
-            });
+        setMissionData((previous_values) => {
+            return {
+                ...previous_values,
+                [event.target.name]: event.target.value,
+            };
         });
-    }
+    };
 
     const handleSubmit = (event) => {
-    event.preventDefault();
-    const response = axios.post(`http://www.mi6.test/api/missions/${missionId}/store`, missionData);
-        console.log(response)
-}
+        event.preventDefault();
+        const response = axios.post(`/api/missions/${missionId}`, missionData);
+        console.log(response);
+    };
 
     useEffect(() => {
         getMission();
@@ -39,19 +38,34 @@ const MissionEditForm = ({ missionId, setMissionId }) => {
             <h2>{missionData?.name}</h2>
             <p>{missionData?.year}</p>
             <div>MissionEditForm</div>
-
-            <form action="" method="post" onSubmit={ handleSubmit }>
-                <input type="text" name='name' value={missionData?.name} onChange={(e) => handleChange(e)}/>
-                <input type="text" name="year" value={missionData?.year} onChange={(e) => handleChange(e)}/>
-                <select name='outcome' id="" onChange={(e) => handleChange(e)}>
-                    <option defaultValue="success" value="success">
-                        Success
-                    </option>
-                    <option value="Fail">Fail</option>
-                </select>
-                <br />
-                <input type="submit" value="Edit" />
-            </form>
+            {missionData ? (
+                <form action="" method="post" onSubmit={handleSubmit}>
+                    <input
+                        type="text"
+                        name="name"
+                        value={missionData?.name}
+                        onChange={(e) => handleChange(e)}
+                    />
+                    <input
+                        type="text"
+                        name="year"
+                        value={missionData?.year}
+                        onChange={(e) => handleChange(e)}
+                    />
+                    <select
+                        name="outcome"
+                        id=""
+                        value={missionData?.outcome ?? ""}
+                        onChange={(e) => handleChange(e)}
+                    >
+                        <option value="">Success</option>
+                        <option value="success">Success</option>
+                        <option value="Fail">Fail</option>
+                    </select>
+                    <br />
+                    <input type="submit" value="Edit" />
+                </form>
+            ) : null}
         </>
     );
 };

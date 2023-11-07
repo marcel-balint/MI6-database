@@ -18,7 +18,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-  return $request->user();
+    return $request->user();
 });
 
 Route::get("/people", [PersonController::class, 'index'])->name('people');
@@ -26,3 +26,5 @@ Route::get("/people/{id}", [PersonController::class, 'show'])->name('show');
 Route::get('/statuses', [StatusController::class, 'index'])->name('statuses');
 Route::get('/missions', [MissionController::class, 'index'])->name('missions');
 Route::get('/missions/{mission_id}', [MissionController::class, 'show'])->name('mission');
+
+Route::post('/missions/{id}', [MissionController::class, 'store'])->name('store');
