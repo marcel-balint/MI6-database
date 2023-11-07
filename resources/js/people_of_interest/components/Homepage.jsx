@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "/resources/css/style.scss";
 import People from "./People";
+import Missions from "./Missions";
 export default function Homepage({ content, setContent }) {
     const [open, setOpen] = useState(true);
 
@@ -19,6 +20,12 @@ export default function Homepage({ content, setContent }) {
             case 'people_of_interest' :
 
                 choosenContent = <People />
+
+                break;
+
+            case 'missions' :
+
+                choosenContent = <Missions />
 
                 break;
 
@@ -44,6 +51,10 @@ export default function Homepage({ content, setContent }) {
 
                         <li className="sidenav__link" onClick={() => setContent('people_of_interest')}>
                             <a href="#">People of interest</a>
+                        </li>
+
+                        <li className="sidenav__link" onClick={() => setContent('missions')}>
+                            <a href="#">Missions</a>
                         </li>
                     </ul>
                 </div>
