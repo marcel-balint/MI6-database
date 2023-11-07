@@ -10,9 +10,17 @@ use function Laravel\Prompts\select;
 
 class PersonController extends Controller
 {
-  public function index()
+  public function index(Request $request)
   {
-    $people = Person::with('aliases', 'image')->limit(32)->get();
+    $status = $request->input('status');
+
+
+    $query = Person::with('aliases', 'image');
+    if ($status) {
+      $query = $query->where('status_id', $status);
+    }
+
+    $people = $query->limit(32)->get();
 
     return $people;
   }
@@ -20,7 +28,7 @@ class PersonController extends Controller
   {
     // it has GET by default so we start with 'with'
     $the_agent = Person::with('aliases', 'image')->findOrFail($id);
-   
+
 
     return $the_agent;
   }
