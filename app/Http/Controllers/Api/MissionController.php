@@ -8,30 +8,38 @@ use Illuminate\Http\Request;
 
 class MissionController extends Controller
 {
-    public function index()
-    {
-        $missions = Mission::get();
+  public function index()
+  {
+    $missions = Mission::get();
 
-        return $missions;
-    }
+    return $missions;
+  }
 
-    public function show($mission_id)
-    {
-        $mission = Mission::findOrFail($mission_id);
+  public function show($mission_id)
+  {
+    $mission = Mission::findOrFail($mission_id);
 
-        return $mission;
-    }
+    return $mission;
+  }
 
 
-    public function store(Request $request, $id)
-    {
-        $mission = Mission::findOrFail($id);
-        $mission->name = $request->input('name');
-        $mission->year = $request->input('year');
-        $mission->outcome = $request->input('outcome');
-        $mission->save();
-        return [
-            'status' => 'success'
-        ];;
-    }
+  public function store(Request $request, $id)
+  {
+    $this->validate($request, [
+      'name' => 'required',
+      'year' => 'required|min:4|numeric',
+    ]);
+
+    $mission = Mission::findOrFail($id);
+    $mission->name = $request->input('name');
+    $mission->year = $request->input('year');
+    $mission->outcome = $request->input('outcome');
+    $mission->save();
+
+    // session()->flash('success_message', 'The mission was successfully updated!');
+
+    return [
+      'status' => 'success'
+    ];
+  }
 }

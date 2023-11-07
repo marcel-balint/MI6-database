@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 
 const MissionEditForm = ({ missionId, setMissionId }) => {
     const [missionData, setMissionData] = useState(null);
+    const [message, setMessage] = useState(null);
 
     const getMission = async () => {
         const response = await axios.get(
@@ -21,11 +22,19 @@ const MissionEditForm = ({ missionId, setMissionId }) => {
         });
     };
 
-    const handleSubmit = (event) => {
+    const handleSubmit = async (event) => {
         event.preventDefault();
-        const response = axios.post(`/api/missions/${missionId}`, missionData);
-        console.log(response);
+        try {
+          const response = await axios.post(`/api/missions/${missionId}`, missionData);
+          setMessage(response.data['status']);
+          
+        } catch (error) {
+          setMessage('ERROR')
+        }
+
     };
+
+    
 
     useEffect(() => {
         getMission();
@@ -37,6 +46,7 @@ const MissionEditForm = ({ missionId, setMissionId }) => {
 
             <h2>{missionData?.name}</h2>
             <p>{missionData?.year}</p>
+            {message == 'ERROR'? <p>ERROR</p>:'Success!'}
             <div>MissionEditForm</div>
             {missionData ? (
                 <form action="" method="post" onSubmit={handleSubmit}>

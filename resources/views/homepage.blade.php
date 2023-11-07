@@ -10,6 +10,7 @@
 </head>
 <body>
 
+
     <div id="people-of-interest-app"></div>
 
     @vite('resources/js/people_of_interest.jsx') 
