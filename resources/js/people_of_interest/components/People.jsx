@@ -6,12 +6,21 @@ import StatusFilter from "./StatusFilter";
 export default function People() {
     const [agents, setAgents] = useState(null);
     const [agentId, setAgentId] = useState(null);
-    const [selectedStatus, setSelectedStatus] = useState('')
+    const [selectedStatus, setSelectedStatus] = useState("");
+
+    console.log(selectedStatus);
 
     const loadAgents = async () => {
         try {
-            const response = await fetch("http://www.mi6.test/api/people");
+            const response = await fetch(
+                              `http://www.mi6.test/api/people?status=${encodeURIComponent(
+                    selectedStatus
+                )}`
+                // `http://www.mi6.test/api/people?status=encodeURIComponent(${selectedStatus})`
+            );
             const data = await response.json();
+
+            
             // console.log(data);
             setAgents(data);
         } catch (error) {
@@ -24,7 +33,7 @@ export default function People() {
 
     useEffect(() => {
         loadAgents();
-    }, []);
+    }, [selectedStatus]);
 
     const handleId = (id) => {
         setAgentId(id);
@@ -46,12 +55,13 @@ export default function People() {
         );
     });
 
-
     return (
-    <>
-    {agentId == null ? <ul> {agentsList} </ul> : personDetail}
-    <StatusFilter selectedStatus={selectedStatus} setSelectedStatus={setSelectedStatus} />
-    </>
-    )
+        <>
+            {agentId == null ? <ul> {agentsList} </ul> : personDetail}
+            <StatusFilter
+                selectedStatus={selectedStatus}
+                setSelectedStatus={setSelectedStatus}
+            />
+        </>
+    );
 }
-
