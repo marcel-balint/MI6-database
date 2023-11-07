@@ -1,12 +1,31 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "/resources/css/style.scss";
 import People from "./People";
-export default function Homepage() {
+export default function Homepage({ content, setContent }) {
     const [open, setOpen] = useState(true);
 
     function toggleMenu() {
         setOpen(!open);
     }
+
+    let choosenContent = null
+        switch (content) {
+            case '':
+
+                choosenContent = <h1>Welcome to MI6</h1>
+
+                break;
+
+            case 'people_of_interest' :
+
+                choosenContent = <People />
+
+                break;
+
+            default :
+
+                break;
+        }
 
     return (
         <div className="body">
@@ -19,11 +38,11 @@ export default function Homepage() {
                     />
 
                     <ul className="sidenav__links">
-                        <li className="sidenav__link sidenav__link_active">
+                        <li className="sidenav__link sidenav__link_active" onClick={() => setContent('')}>
                             <a href="#">Home</a>
                         </li>
 
-                        <li className="sidenav__link">
+                        <li className="sidenav__link" onClick={() => setContent('people_of_interest')}>
                             <a href="#">People of interest</a>
                         </li>
                     </ul>
@@ -39,8 +58,9 @@ export default function Homepage() {
             </nav>
 
             <main>
-                <h1>Welcome to MI6</h1>
-                <People />
+
+               {choosenContent}
+
             </main>
         </div>
     );
