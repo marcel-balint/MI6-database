@@ -1,10 +1,12 @@
 import { useEffect, useState } from "react";
 import React from "react";
 import PersonDetail from "./PersonDetail";
+import StatusFilter from "./StatusFilter";
 
 export default function People() {
     const [agents, setAgents] = useState(null);
     const [agentId, setAgentId] = useState(null);
+    const [selectedStatus, setSelectedStatus] = useState('')
 
     const loadAgents = async () => {
         try {
@@ -45,6 +47,11 @@ export default function People() {
     });
 
 
-    return <>{agentId == null ? <ul> {agentsList} </ul> : personDetail}</>;
+    return (
+    <>
+    {agentId == null ? <ul> {agentsList} </ul> : personDetail}
+    <StatusFilter selectedStatus={selectedStatus} setSelectedStatus={setSelectedStatus} />
+    </>
+    )
 }
 
